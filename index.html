@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINMSO: Soluciones en Limpieza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('.main-nav').classList.toggle('active');
+        });
+    </script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="./assets/linmso-reduced.png" alt="Logo de LINMSO">
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Nuestros Servicios</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#clientes">Nuestros Clientes</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 477 880 1398</span>
+                <span><i class="fas fa-envelope"></i> ventas.grupolinmso@gmail.com</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>LINMSO: Soluciones en Limpieza</h1>
+                <p>Somos una empresa especializada en servicios de limpieza y mantenimiento industrial, comercial y residencial con más de 15 años de experiencia.</p>
+                <a href="#contacto" class="cta-button">Contáctanos Ahora</a>
+            </div>
+        </section>
+
+        <section id="acerca-de" class="about-us">
+            <h2>Nuestro Principal Objetivo</h2>
+            <h3>El cuidado e imagen de su empresa.</h3>
+            <p>Con más de 15 años de experiencia en el sector, nos comprometemos a ofrecer servicios de limpieza y mantenimiento de la más alta calidad, garantizando la seriedad y el profesionalismo en cada proyecto.</p>
+        </section>
+
+        <section id="servicios" class="services">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-broom"></i>
+                    <h3>Limpieza y Desinfección</h3>
+                    <p>Servicios especializados para todo tipo de espacios.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Mantenimiento y Jardinería</h3>
+                    <p>Cuidado y embellecimiento de áreas verdes.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Control de Plagas</h3>
+                    <p>Manejo seguro y efectivo de plagas.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-soap"></i>
+                    <h3>Lavado y Pulido de Pisos</h3>
+                    <p>Recuperación del brillo y protección de superficies.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Venta de Productos de Limpieza</h3>
+                    <p>Distribución de insumos de alta calidad.</p>
+                </div>
+            </div>
+            <p class="coverage-text">Cobertura Nacional</p>
+        </section>
+
+        <section id="por-que-elegirnos" class="why-choose-us">
+            <h2>Por Qué Elegirnos</h2>
+            <div class="reasons-grid">
+                <div class="reason">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Calidad del Personal</h3>
+                    <p>Personal y supervisores altamente capacitados.</p>
+                </div>
+                <div class="reason">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Supervisión y Control</h3>
+                    <p>Bitácoras de supervisión para un control total.</p>
+                </div>
+                <div class="reason">
+                    <i class="fas fa-tools"></i>
+                    <h3>Equipamiento de Calidad</h3>
+                    <p>Productos, maquinaria y herramientas de alta gama.</p>
+                </div>
+            </div>
+            <div class="repse-info">
+                <i class="fas fa-certificate"></i>
+                <p>Empresa registrada ante el **REPSE**.</p>
+            </div>
+        </section>
+
+        <section id="beneficios" class="benefits">
+            <h2>Beneficios de Trabajar con Nosotros</h2>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Reducción de costos administrativos y de reclutamiento.</li>
+                <li><i class="fas fa-check-circle"></i> Otorgamos el 100% de las prestaciones de ley.</li>
+                <li><i class="fas fa-check-circle"></i> Sueldo superior al recibido en un empleo similar.</li>
+                <li><i class="fas fa-check-circle"></i> Trato digno y personal satisfecho.</li>
+                <li><i class="fas fa-check-circle"></i> Capacitación continua en técnicas y uso de materiales.</li>
+            </ul>
+        </section>
+
+        <section id="clientes" class="clients">
+            <h2>Algunos de Nuestros Clientes</h2>
+            <div class="clients-logos">
+                <img src="https://via.placeholder.com/100x50.png?text=Pangea" alt="Logo de Pangea">
+                <img src="https://via.placeholder.com/100x50.png?text=Chedraui" alt="Logo de Chedraui">
+                <img src="https://via.placeholder.com/100x50.png?text=MPE" alt="Logo de MPE">
+                <img src="https://via.placeholder.com/100x50.png?text=Harting" alt="Logo de Harting">
+                <img src="https://via.placeholder.com/100x50.png?text=Caja+Popular" alt="Logo de Caja Popular Mexicana">
+                <img src="https://via.placeholder.com/100x50.png?text=GrupoVeo" alt="Logo de GrupoVeo">
+                <img src="https://via.placeholder.com/100x50.png?text=Reyma" alt="Logo de Reyma">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/150x50.png?text=LINMSO+LOGO" alt="Logo de LINMSO">
+            </div>
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> León, GTO.</p>
+                <p><i class="fas fa-phone"></i> 477 880 1398</p>
+                <p><i class="fas fa-envelope"></i> ventas.grupolinmso@gmail.com</p>
+            </div>
+            <div class="footer-links">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LINMSO Soluciones. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
