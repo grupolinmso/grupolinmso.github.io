@@ -785,9 +785,6 @@ section {
         align-items: center;
     }
     
-    .contact-info {
-        display: none;
-    }
     
     section {
         padding: 60px 0;
@@ -851,3 +848,5 @@ section {
         padding: 20px;
     }
 }
+
+
