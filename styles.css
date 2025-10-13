@@ -165,6 +165,7 @@ p {
     align-items: center;
     justify-content: center;
     scroll-margin-top: 0; /* Hero no necesita margen superior */
+    margin-top: -100px;
 }
 
 .hero-container {
@@ -172,7 +173,7 @@ p {
     flex-direction: row;
     width: 100%;
     max-width: var(--max-width);
-    height: 70vh;
+    height: 68vh;
     margin: 0 auto;
     box-shadow: var(--shadow-hover);
     border-radius: var(--border-radius);
@@ -341,6 +342,24 @@ p {
 @keyframes fillProgress {
     from { width: 0%; }
     to { width: 100%; }
+}
+
+/* ============================================= */
+/* SECCIÓN SOBRE NOSOTROS         */
+/* ============================================= */
+.about-us {
+    padding: 0; /* Quitamos el padding superior para controlar con el margen */
+    margin-top: -10vh; /* <-- CLAVE: Sube la sección */
+    position: relative;
+    z-index: 20;
+}
+
+.about-us-container {
+    background-color: var(--bg-color-white);
+    padding: 40px 50px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-hover);
+    max-width: 900px; /* Hacemos el contenedor un poco más angosto */
 }
 
 /* ============================================= */
@@ -837,6 +856,22 @@ p {
     
     .hero-buttons {
         justify-content: center;
+    }
+
+    /* Devolvemos a "Sobre Nosotros" su estilo de sección normal en móvil */
+    .about-us {
+        /* 1. Reseteo del margen negativo para que no se encime */
+        margin-top: 0;
+        /* 2. Espaciado normal de sección */
+        padding: 60px 0;
+    }
+
+    .about-us-container {
+        /* 3. Se quitan los estilos de "tarjeta flotante" */
+        box-shadow: none;
+        border-radius: 0;
+        /* 4. Padding estándar del contenedor */
+        padding: 0 20px;
     }
 
     /* Cobertura Responsive */
