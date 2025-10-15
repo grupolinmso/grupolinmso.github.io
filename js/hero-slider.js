@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.progressBar = document.getElementById('progress-bar');
             this.sliderContainer = document.querySelector('.hero-slider-container');
             this.currentSlide = 0;
-            this.slideDuration = 2500; // 2.5 segundos
+            this.slideDuration = 3000; // 3 segundos
 
             this.init();
         }

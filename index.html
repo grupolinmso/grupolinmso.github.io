@@ -51,19 +51,22 @@
                     <div class="hero-slider-container">
                         <div class="hero-slider">
                             <div class="slide active">
-                                <img src="./assets/pexels-mastercowley-713297-medium.jpg" alt="Limpieza profesional">
+                                <img class="focus-left" src="./assets/LimpiezaLinmso.JPG" alt="Limpieza profesional">
                             </div>
                             <div class="slide">
-                                <img src="./assets/limpieza-de-oficinas-y-empresas-1024x1024.webp" alt="Pulido de pisos industrial">
+                                <img class="focus-left" src="./assets/limpieza-de-hormigon-con-fregadora-1024x575.jpg" alt="Limpieza con fregadora">
                             </div>
                             <div class="slide">
-                                <img src="./assets/limpieza-de-hormigon-con-fregadora-1024x575.jpg" alt="Sanitización y desinfección">
+                                <img src="./assets/PulidoraLinmso.jpeg" alt="Pulido de pisos">
                             </div>
                             <div class="slide">
-                                <img src="./assets/Cover_Loctite7013_21518.jpg" alt="Jardinería y áreas verdes">
+                                <img src="./assets/Cover_Loctite7013_21518.jpg" alt="Pulidora de pisos">
                             </div>
                             <div class="slide">
-                                <img src="./assets/post-01.jpg" alt="Pulido de pisos especializado">
+                                <img src="./assets/limpieza-de-oficinas-y-empresas-1024x1024.webp" alt="Limpieza de oficinas">
+                            </div>
+                            <div class="slide">
+                                <img src="./assets/post-01.jpg" alt="Limpieza especializada">
                             </div>
                         </div>
                         
@@ -74,13 +77,31 @@
 
                 </div>
             </section>
+            <section id="stats" class="stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h2 class="stat-number" data-target="15">+0</h2>
+                            <p>Años de experiencia</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2 class="stat-number" data-target="500">+0</h2>
+                            <p>Clientes satisfechos</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2 class="stat-number" data-target="300">+0</h2>
+                            <p>Colaboradores</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section id="sobre-nosotros" class="about-us">
-            <div class="container">
-                <h2>Sobre nosotros</h2>
-                <p>
-                    Somos una empresa especializada en servicios de limpieza y mantenimiento industrial, comercial y residencial, entendemos a la perfección las necesidades y elementos clave que buscan nuestros clientes, garantizando asi un servicio confiable y calificado, siendo nuestro principal objetivo el cuidado e imagen de sus instalaciones.
-                </p>
-            </div>
+                <div class="container">
+                    <h2 data-aos="fade-up">Sobre nosotros</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        Somos una empresa especializada en servicios de limpieza y mantenimiento industrial, comercial y residencial, entendemos a la perfección las necesidades y elementos clave que buscan nuestros clientes, garantizando asi un servicio confiable y calificado, siendo nuestro principal objetivo el cuidado e imagen de sus instalaciones.
+                    </p>
+                </div>
             </section>
             <section id="servicios" class="services">
                 <div class="container">
@@ -129,7 +150,6 @@
                         </div>
                     
                         <div class="coverage-info">
-                            <!-- <h3>Con presencia actualmente en:</h3> -->
                             <div class="states-grid">
                                 <div class="state-item" data-aos="fade-left" data-aos-delay="200">
                                     <i class="fas fa-map-marker-alt"></i>
@@ -196,11 +216,8 @@
                             </div>
                         </div>
                         <div class="repse-info" data-aos="zoom-in" data-aos-delay="500">
-                            <div class="repse-badge">
-                                <i class="fas fa-certificate"></i>
-                                <span>Somos una empresa con registro  <strong>REPSE</strong></span>
-                            </div>
-                            <p>Registro de Prestadoras de Servicios Especializados u Obras Especializadas</p>
+                            <h3>Somos una empresa con registro ante la STPS</h3>
+                              <img src="./assets/E_REPSE_HOME.png" alt="Logo Oficial REPSE: Registro de Prestadoras de Servicios Especializados u Obras Especializadas">
                         </div>
                     </div>
                 </div>
@@ -246,7 +263,7 @@
 
             <section id="clientes" class="clients">
                 <div class="container">
-                    <h2>Nuestros Clientes</h2>
+                    <h2>Algunos de nuestros Clientes</h2>
                     <div class="clients-logos">
                         <div class="client-logo" data-aos="zoom-in">
                             <img src="./assets/chedraui-seeklogo.png" alt="Logo de CHEDRAUI">
@@ -281,7 +298,7 @@
                                 <i class="fas fa-envelope"></i>
                                 <span>ventas.grupolinmso@gmail.com</span>
                             </div>
-                            <a href="https://wa.me/4793759337" class="whatsapp-button" target="_blank">
+                            <a href="https://wa.me/+524793759337" class="whatsapp-button" target="_blank">
                                 <i class="fab fa-whatsapp"></i>
                                 Contáctanos por WhatsApp
                             </a>
@@ -303,7 +320,6 @@
                                 <div class="form-group">
                                     <input type="tel" name="telefono" placeholder="Teléfono" required>
                                 </div>
-                                <!-- CAMPO EMAIL FALTABA -->
                                 <div class="form-group">
                                     <input type="email" name="email" placeholder="Correo electrónico" required>
                                 </div>
@@ -439,6 +455,16 @@
         <script src="./js/menu-toggle.js"></script>
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
         <script src="./js/hero-slider.js"></script>
+        <script src="./js/counters.js"></script> <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <script>
+            // Escucha del evento personalizado que se dispara desde el backend.
+            document.body.addEventListener('form-sent-successfully', function(event) {
+                // 'event.detail.target' es el formulario que hizo la petición.
+                // '.reset()' es una función nativa de JavaScript para borrar los campos de un formulario.
+                console.log("Formulario enviado con éxito. Borrando campos.");
+                event.detail.target.reset();
+            });
+        </script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             // Selección ambos modales
