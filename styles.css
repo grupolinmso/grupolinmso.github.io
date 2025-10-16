@@ -55,7 +55,7 @@ ul {
 section {
     padding: 80px 0;
     text-align: center;
-    scroll-margin-top: 99px; /* Espacio para el header sticky */
+    scroll-margin-top: 99px; 
 }
 
 h1, h2, h3, h4 {
@@ -164,7 +164,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    scroll-margin-top: 0; /* Hero no necesita margen superior */
+    scroll-margin-top: 0; 
     margin-top: -100px;
 }
 
@@ -186,7 +186,7 @@ p {
     background-color: var(--bg-color-white);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* <-- Esta línea centra el contenido verticalmente */
+    justify-content: center; 
     padding: 40px 60px;
     text-align: center;
     position: relative;
@@ -200,7 +200,6 @@ p {
     color: var(--primary-color);
     margin: 0;
     font-size: clamp(2rem, 4vw, 3.2rem);
-    /* AÑADIMOS LA SOMBRA PARA DARLE PROFUNDIDAD */
     text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 2;
@@ -213,20 +212,6 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* CONFIGURACIÓN DEL FONDO REPETIDO */
-    /* background-image: url('./assets/linmso-reduced.png'); */
-    /* background-size: 250px;  */
-    /* background-repeat: repeat;  */
-    /* opacity: 0.07; */
-    /* filter: grayscale(100%); */
-    
-    /* INCLINACIÓN ASCENDENTE */
-    /* Rotamos en negativo para que la diagonal suba de izquierda a derecha */
-    /* Escalamos para asegurar que el patrón cubra las esquinas */
-    /* transform: rotate(-25deg) scale(1.2);  */
-    
-    /* z-index: 1; */
 }
 
 .hero-buttons {
@@ -236,12 +221,12 @@ p {
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
+    justify-content: center;
 }
 
 .cta-button {
     background-color: var(--accent-color);
     color: var(--primary-color);
-    /* padding: 10px 20px; */
     height: 55px;
     width: 220px;
     border-radius: 50px;
@@ -373,16 +358,12 @@ p {
 .stat-item {
     text-align: center;
     position: relative;
-    /* padding-top: 20px;  Espacio para la línea superior  */
 }
-
-
 
 .stat-number {
     font-size: 2.8rem;
     font-weight: 700;
     color: var(--primary-color);
-    /* margin-bottom: 5px; */
     margin: 0;
 }
 
@@ -398,13 +379,10 @@ p {
     
     /* Valores para la línea debajo de stats */
     width: 90px;  /* Más ancho */
-    height: 4px;  /* <-- Más grueso */
+    height: 4px;  /* Más grueso */
 
     background-color: var(--secondary-color);
     border-radius: 2px;
-    
-    /* Controla el espacio con margin */
-    /* Formato: margin: [espacio-arriba] [auto] [espacio-abajo]; */
     margin: 5px auto 8px; 
 }
 
@@ -413,7 +391,7 @@ p {
 /* ============================================= */
 .about-us {
     padding: 80px 0; 
-    margin-top: -12vh; /* <-- Reseteamos el margen para que no se solape */
+    margin-top: -12vh; 
     position: relative;
     z-index: 1;
 }
@@ -481,6 +459,7 @@ p {
 
 .map-placeholder {
     flex: 1.5;
+    flex-shrink: 0;
 }
 
 .coverage-map {
@@ -542,17 +521,16 @@ p {
 }
 
 .team-features {
-    /* Se cambió de Grid a Flexbox */
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /*para centrar la última fila */
+    justify-content: center; 
     gap: 20px;
     margin-bottom: 40px;
 }
 
 .feature-item {
-    flex: 1 1 300px; /* Permite que los elementos se redimensionen*/
-    max-width: 350px; /* Evita que se estiren mucho */
+    flex: 1 1 300px; 
+    max-width: 350px; 
     display: flex;
     align-items: flex-start;
     gap: 15px;
@@ -595,7 +573,6 @@ p {
 
 .benefits-grid {
     display: grid;
-    /*auto-fit para que sea responsivo en tablets */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 50px;
@@ -641,7 +618,9 @@ p {
 }
 
 .client-logo img {
-    max-width: 70%;
+    max-height: 140px;
+    width: auto;
+    max-width: 100%;
     height: auto;
     filter: grayscale(100%);
     opacity: 0.6;
@@ -870,20 +849,16 @@ p {
 /* ============================================= */
 /* Ajuste para tablet (1024px hacia abajo) */
 @media (max-width: 1024px) {
-    
-    /* Reseteo de los márgenes negativos para evitar el solapamiento */
     .stats,
     .about-us {
         margin-top: 0;
     }
 
-    /* Ajuste de la altura del hero para que el contenido no se corte */
     .hero-container {
-        height: auto; /* La altura se ajuste al contenido */
+        height: auto; 
         min-height: 70vh;
     }
 
-    /* Reducción del tamaño del título del hero para que ajuste mejor */
     .hero-text-content h1 {
         font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     }
@@ -932,7 +907,6 @@ p {
         text-align: left;
     }
 
-    /* Hero Responsive (Superposición) */
     .hero {
         min-height: 0;
         padding-top: 0;
@@ -977,21 +951,16 @@ p {
     }
 
     .about-us {
-        /* Reseteo del margen negativo para que no se encime */
         margin-top: -40px;
-        /* Espaciado normal de sección */
         padding: 60px 0;
     }
 
     .about-us-container {
-        /* Se quitan los estilos de "tarjeta flotante" */
         box-shadow: none;
         border-radius: 0;
-        /* Padding estándar del contenedor */
         padding: 0 20px;
     }
 
-    /* Cobertura Responsive */
     .coverage-content {
         flex-direction: column;
         gap: 30px;
@@ -1005,7 +974,7 @@ p {
 
     /* Se centra el elemento impar de los stats */
     .stat-item:last-child:nth-child(odd) {
-        grid-column: span 2; /* El último elemento ocupa el ancho de las 2 columnas */
+        grid-column: span 2; 
     }
 }
 
@@ -1016,7 +985,7 @@ p {
     }
 
     .about-us {
-    padding-top: 0px; /* Reduce el espacio superior */
+    padding-top: 0px; 
     }
 
     .contact-content {
@@ -1069,7 +1038,7 @@ p {
         box-shadow: none;
     }
     .stats-grid {
-        row-gap: 0px; /*Espacio vertical reducido y fijo */
+        row-gap: 0px; 
     }
 
     .stat-number,
@@ -1097,7 +1066,7 @@ p {
     }
 
     .hero-text-content h1 {
-        font-size: 1.9rem; /* Ajuste específico para el hero */
+        font-size: 1.9rem; 
     }
     
     h2 {
@@ -1125,11 +1094,11 @@ p {
     }
 
     .stat-number {
-    font-size: 2.2rem; /* Reducción del tamaño de las estadísticas para que ajusten bien */
+    font-size: 2.2rem; 
     }
 
     .stat-item p {
-    font-size: 0.9rem; /* Y el texto también */
+    font-size: 0.9rem; 
     }
 }
 
@@ -1199,9 +1168,9 @@ p {
 }
 
 .modal-close {
-    position: absolute; /* Vuelve a ser absoluto con respecto al modal-content */
-    top: 15px;          /* Distancia desde la parte superior del modal */
-    right: 20px;        /* Fijo a 20px de la derecha */
+    position: absolute; 
+    top: 15px;          
+    right: 20px;        
     background: none;
     border: none;
     font-size: 2rem;
