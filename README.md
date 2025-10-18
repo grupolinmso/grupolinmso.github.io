@@ -32,46 +32,9 @@ El objetivo del sitio es presentar de forma clara, profesional y visualmente opt
 
 ```text
 linmso/
-├── index.html               # Página principal del sitio
-├── styles.css               # Estilos visuales y layout
-└── assets/                  # Logos institucionales
-    ├── chedraui-seeklogo.png
-    ├── harting-seeklogo.png
-    ├── caja-popular-mexicana-seeklogo.png
-    ├── reyma-logo-png_seeklogo-118138.png
-    └── Gemini_Generated_Image_6dblxl6dblxl6dbl.png
+├── index.html
+├── styles.css
+├── js/
+└── assets/
 ```
-
----
-
-## Sitio publicado en GitHub Pages
-
-🔗 [https://filazdev.github.io/linmso/](https://filazdev.github.io/linmso/)
-
----
-
-## Próximos pasos sugeridos
-
-### Validación de accesibilidad (WCAG)
-- Etiquetas `alt` descriptivas en imágenes.  
-- Contraste adecuado entre texto y fondo.  
-- Navegación accesible por teclado.  
-- Roles ARIA para componentes interactivos.
-
-### Optimización semántica para SEO
-- Uso correcto de etiquetas como `<header>`, `<main>`, `<section>`, etc.  
-- Títulos jerárquicos (`<h1>` a `<h3>`) bien estructurados.  
-- Metadatos relevantes en el `<head>`.
-
-### Integración de componentes reutilizables
-- Separación modular de secciones como “Servicios” o “Contacto”.  
-- Clases CSS reutilizables (`.card`, `.btn`, `.grid`, etc.).  
-- Posible migración futura a frameworks como React o Vue.
-
-### Documentación técnica del layout y decisiones visuales
-- Explicación de decisiones visuales en `README` o `docs/layout.md`.  
-- Documentación de la estrategia CSS (Mobile First, BEM, etc.).  
-- Inclusión de esquemas o capturas si el diseño lo requiere.
-
----
 
