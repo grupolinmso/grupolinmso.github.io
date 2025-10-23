@@ -38,3 +38,6 @@ linmso/
 └── assets/
 ```
 
+---
+
+Este es un proyecto privado. Por favor, consulte el archivo LICENSE para conocer los términos de uso.
