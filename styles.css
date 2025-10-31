@@ -738,6 +738,90 @@ p {
     transform: translateY(-3px);
 }
 
+.submit-button.htmx-request .htmx-request-text {
+    display: none;
+}
+.submit-button.htmx-request .htmx-indicator {
+    display: inline;
+}
+
+/* Clase para ocultar visualmente el label de servicios pero mantener accesible para lectores de pantalla */
+.visual-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  border: 0;
+}
+
+/* Estilos para mensajes de respuesta del formulario */
+#form-response {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Mensaje informativo (azul) - para límite de mensajes normales */
+#form-response .info,
+#form-response.info {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+#form-response.permanent .info.permanent {
+    background-color: #d1ecf1;
+    border: 2px solid #17a2b8;
+    font-weight: 500;
+}
+
+/* Mensaje de éxito (verde) */
+#form-response .success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+/* Mensaje de advertencia temporal (amarillo/naranja) */
+#form-response .warning,
+#form-response.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+/* Mensaje de error permanente (rojo) */
+#form-response .error,
+#form-response.permanent {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Estilo más intenso para errores permanentes */
+#form-response.permanent .error.permanent {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    font-weight: 500;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ============================================= */
 /* FOOTER                     */
 /* ============================================= */
@@ -1140,7 +1224,7 @@ p {
     transform: translateX(-50%);
     width: 150px; /* Ancho del logo */
     height: 60px; /* Alto del logo */
-    background-image: url('./assets/linmso-reduced.png');
+    background-image: url('./assets/logo-linmso.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1190,6 +1274,12 @@ p {
     margin-top: 30px;
     font-style: italic;
     color: #999;
+}
+
+#spinner,
+#privacy-modal,
+#terms-modal {
+    display: none;
 }
 
 @keyframes fadeIn {

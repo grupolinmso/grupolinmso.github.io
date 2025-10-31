@@ -25,11 +25,13 @@
         <header class="header">
             <div class="header-content">
                 <div class="logo">
-                    <img src="./assets/logo-linmso.png" alt="Logo de LINMSO Soluciones en Limpieza">
+                    <a href="#inicio">
+                        <img src="./assets/logo-linmso.png" alt="Logo de LINMSO Soluciones en Limpieza">
+                    </a>
                 </div>
-                <div class="menu-toggle" aria-label="Abrir menú de navegación">
+                <button type="button" class="menu-toggle" aria-label="Abrir menú de navegación">
                     <i class="fas fa-bars"></i>
-                </div>
+                </button>
                 <nav class="main-nav">
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
@@ -315,6 +317,7 @@
                         </div>
                         <div class="contact-form">
                             <form 
+                                id="contact-form"
                                 hx-post="/api/v1/contact" 
                                 hx-target="#form-response" 
                                 hx-swap="innerHTML"
@@ -334,7 +337,8 @@
                                     <input type="email" name="email" placeholder="Correo electrónico" required>
                                 </div>
                                 <div class="form-group">
-                                    <select name="servicio" required>
+                                    <label class="visual-oculto" for="servicio-select">Tipo de servicio:</label>
+                                    <select name="servicio" id="servicio-select" required>
                                         <option value="">Tipo de servicio</option>
                                         <option value="personal-limpieza">Personal de limpieza</option>
                                         <option value="limpieza-profunda">Limpieza profunda</option>
@@ -347,11 +351,17 @@
                                 <div class="form-group">
                                     <textarea name="mensaje" placeholder="Mensaje" rows="4"></textarea>
                                 </div>
+                                <input type="hidden" name="client_timezone" id="client_timezone">
+                                <input type="hidden" name="client_language" id="client_language">
+                                <input type="hidden" name="client_timestamp_full" id="client_timestamp_full">
+                                <div class="form-group honeypot-field" style="display: none;" aria-hidden="true">
+                                    <label for="website_url">Website URL (leave blank):</label> 
+                                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                                </div>
                                 <button type="submit" class="submit-button">
-                                    <span id="spinner" class="htmx-indicator" style="display: none;">
-                                        <i class="fas fa-spinner fa-spin"></i> Enviando...
+                                    <span class="htmx-indicator" id="spinner"> <i class="fas fa-spinner fa-spin"></i> Enviando...
                                     </span>
-                                    <span class="htmx-request-hidden">Enviar Mensaje</span>
+                                    <span class="htmx-request-text">Enviar Mensaje</span>
                                 </button>
                                 <div id="form-response"></div>
                             </form>
@@ -390,8 +400,8 @@
                     <div class="footer-section">
                         <h3>Síguenos</h3>
                         <div class="footer-social">
-                            <a href="https://www.facebook.com/grupolinmsolimpieza/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/grupolinmso.oficial/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/grupolinmsolimpieza/" target="_blank" rel="noopener noreferrer" aria-label="Visita nuestra página de Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/grupolinmso.oficial/" target="_blank" rel="noopener noreferrer" aria-label="Visita nuestro perfil de Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -405,7 +415,7 @@
             </div>
         </footer>
 
-        <div id="privacy-modal" class="modal-overlay" style="display: none;">
+        <div id="privacy-modal" class="modal-overlay">
             <div class="modal-content">
                 <button class="modal-close" onclick="closeModal()">&times;</button>
                 <h2>Aviso de Privacidad Simplificado</h2>
@@ -415,6 +425,7 @@
 
                 <h3>Información Recabada</h3>
                 <p>La información que recabamos de usted podría incluir: imagen personal videograbada, voz, datos biométricos, nombre, firma, datos de la empresa que representa, correo electrónico, teléfonos, datos de cuenta bancaria, RFC, entre otros.</p>
+                <p>Adicionalmente, cuando usted utiliza nuestro formulario de contacto en línea, recabamos información técnica básica (como su dirección IP, tipo de navegador y zona horaria). Esta información no se usa para identificarlo personalmente, sino para fines de diagnóstico técnico y para mejorar la seguridad de nuestro sitio, ayudándonos a prevenir el spam y el abuso automatizado.</p>
                 
                 <h3>Finalidades Primarias</h3>
                 <p>Sus datos se utilizarán para: control de acceso a nuestras oficinas, mantener la seguridad, cumplimiento de la relación jurídica entre usted y nosotros (servicios solicitados, productos que nos vende, o si está interesado en laborar con nosotros).</p>
@@ -432,7 +443,7 @@
             </div>
         </div>
 
-        <div id="terms-modal" class="modal-overlay" style="display: none;">
+        <div id="terms-modal" class="modal-overlay">
             <div class="modal-content">
                 <button class="modal-close" onclick="closeModal()">&times;</button>
                 <h2>Términos y Condiciones de Uso</h2>
@@ -466,15 +477,7 @@
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
         <script src="./js/hero-slider.js"></script>
         <script src="./js/counters.js"></script> 
-        <script>
-            // Escucha del evento personalizado que se dispara desde el backend.
-            document.body.addEventListener('form-sent-successfully', function(event) {
-                // 'event.detail.target' es el formulario que hizo la petición.
-                // '.reset()' es una función nativa de JavaScript para borrar los campos de un formulario.
-                console.log("Formulario enviado con éxito. Borrando campos.");
-                event.detail.target.reset();
-            });
-        </script>
+        <script src="./js/form-handler.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             // Selección ambos modales
@@ -518,6 +521,41 @@
             AOS.init({
                 duration: 800, // Duración de la animación en milisegundos
                 once: false, // La animación se repite
+            });
+        </script>
+        <script>
+            // Popula los campos de telemetría en cuanto carga la página
+            document.addEventListener('DOMContentLoaded', function() {
+                try {
+                    document.getElementById('client_timezone').value = 
+                        Intl.DateTimeFormat().resolvedOptions().timeZone;
+                } catch (e) {
+                    document.getElementById('client_timezone').value = 'Error al obtener';
+                }
+                
+                try {
+                    document.getElementById('client_language').value = 
+                        navigator.language || navigator.userLanguage;
+                } catch (e) {
+                    document.getElementById('client_language').value = 'Error al obtener';
+                }
+
+                try {
+                    // Forzar formato dd-mm-yyyy HH:mm:ss
+                    let d = new Date();
+                    let day = String(d.getDate()).padStart(2, '0');
+                    let month = String(d.getMonth() + 1).padStart(2, '0'); 
+                    let year = d.getFullYear();
+
+                    // Obtener la hora en formato 24hrs (HH:mm:ss)
+                    let time = d.toLocaleTimeString('es-MX', { hour12: false }); 
+
+                    document.getElementById('client_timestamp_full').value = 
+                        `${day}-${month}-${year} ${time}`;
+
+                } catch (e) {
+                    document.getElementById('client_timestamp_full').value = 'Error al obtener';
+                }
             });
         </script>
     </body>
