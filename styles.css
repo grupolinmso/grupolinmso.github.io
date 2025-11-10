@@ -738,6 +738,10 @@ p {
     transform: translateY(-3px);
 }
 
+.submit-button .htmx-indicator {
+    display: none;
+}
+
 .submit-button.htmx-request .htmx-request-text {
     display: none;
 }
@@ -1276,7 +1280,6 @@ p {
     color: #999;
 }
 
-#spinner,
 #privacy-modal,
 #terms-modal {
     display: none;

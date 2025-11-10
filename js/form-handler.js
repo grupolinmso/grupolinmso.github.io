@@ -1,7 +1,6 @@
 // form-handler.js
 
-// Variables de control LOCAL (solo para UI, no para lógica de negocio)
-let serverErrorCount = 0;  // Solo para errores del servidor
+let serverErrorCount = 0; 
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
@@ -20,83 +19,67 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // VALIDACIÓN DEL LADO DEL CLIENTE
     form.addEventListener('submit', function(event) {
+        
+        // Bloqueo inmediato del botón submit
+        submitButton.disabled = true;
+        submitButton.classList.add('htmx-request'); // Muestra el spinner
+        
+
         // Limpiar mensaje anterior
         if (responseDiv) {
             responseDiv.innerHTML = '';
             responseDiv.className = '';
         }
         
-        // Validar nombre
-        if (!nombreInput.value.trim()) {
-            event.preventDefault();
+        // Función helper para re-habilitar el botón en caso de error local
+        const handleLocalError = (message) => {
+            event.preventDefault(); // Detiene el envío de HTMX
             if (responseDiv) {
-                responseDiv.innerHTML = '<div class="warning"><strong>Error de validación:</strong> El nombre es requerido.</div>';
+                responseDiv.innerHTML = `<div class="warning"><strong>Error de validación:</strong> ${message}</div>`;
                 responseDiv.classList.add('warning');
             }
+
+            submitButton.classList.remove('htmx-request');
+
             setTimeout(() => {
                 if (responseDiv) {
                     responseDiv.innerHTML = '';
                     responseDiv.className = '';
                 }
+                // El setTimeout solo re-habilita el botón
+                submitButton.disabled = false;
+                
             }, 5000);
             return false;
+        };
+
+        // Validaciones
+        if (!nombreInput.value.trim()) {
+            return handleLocalError('El nombre es requerido.');
         }
         
-        // Validar teléfono (10 dígitos)
         const telefonoLimpio = telefonoInput.value.replace(/\D/g, '');
         if (telefonoLimpio.length !== 10) {
-            event.preventDefault();
-            if (responseDiv) {
-                responseDiv.innerHTML = '<div class="warning"><strong>Error de validación:</strong> El teléfono debe contener exactamente 10 dígitos.</div>';
-                responseDiv.classList.add('warning');
-            }
-            setTimeout(() => {
-                if (responseDiv) {
-                    responseDiv.innerHTML = '';
-                    responseDiv.className = '';
-                }
-            }, 5000);
-            return false;
+            return handleLocalError('El teléfono debe contener 10 dígitos.');
         }
         
-        // Validar email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(emailInput.value)) {
-            event.preventDefault();
-            if (responseDiv) {
-                responseDiv.innerHTML = '<div class="warning"><strong>Error de validación:</strong> El correo electrónico no es válido.</div>';
-                responseDiv.classList.add('warning');
-            }
-            setTimeout(() => {
-                if (responseDiv) {
-                    responseDiv.innerHTML = '';
-                    responseDiv.className = '';
-                }
-            }, 5000);
-            return false;
+            return handleLocalError('El correo electrónico no es válido.');
         }
         
-        // Validar servicio
         if (!servicioSelect.value) {
-            event.preventDefault();
-            if (responseDiv) {
-                responseDiv.innerHTML = '<div class="warning"><strong>Error de validación:</strong> Debes seleccionar un tipo de servicio.</div>';
-                responseDiv.classList.add('warning');
-            }
-            setTimeout(() => {
-                if (responseDiv) {
-                    responseDiv.innerHTML = '';
-                    responseDiv.className = '';
-                }
-            }, 5000);
-            return false;
+            return handleLocalError('Debes seleccionar un tipo de servicio.');
         }
+
+        // Si todo pasa, el botón se queda deshabilitado y HTMX envía la petición
     });
     
-    // DESHABILITAR BOTÓN DURANTE ENVÍO
+    // DESHABILITAR COMO SEGURO
     form.addEventListener('htmx:beforeRequest', function() {
         console.log('Iniciando petición...');
         submitButton.disabled = true;
+        submitButton.classList.add('htmx-request'); 
         
         if (responseDiv) {
             responseDiv.innerHTML = '';
@@ -126,11 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // ERROR DE VALIDACIÓN (400)
         if (statusCode === 400) {
             console.log('Error de validación');
-            
-            if (responseDiv) {
-                responseDiv.classList.add('warning');
-            }
-            
+            if (responseDiv) { responseDiv.classList.add('warning'); }
+            submitButton.classList.remove('htmx-request');
             setTimeout(() => {
                 submitButton.disabled = false;
                 if (responseDiv) {
@@ -138,19 +118,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     responseDiv.className = '';
                 }
             }, 5000);
-            
             return;
         }
         
-        // RATE LIMITING (429) - El backend maneja TODO 
+        // RATE LIMITING (429)
         if (statusCode === 429) {
             console.log('Rate limit excedido');
-            
-            // El backend ya envió el mensaje apropiado
-            // Simplemente deshabilitamos el botón permanentemente
             form.reset();
             submitButton.disabled = true;
-            
+            submitButton.classList.remove('htmx-request');
             return;
         }
         
@@ -161,14 +137,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (serverErrorCount >= 3) {
                 console.log('Bloqueo permanente por 3 fallos del servidor');
-                
-                // El mensaje ya viene del backend, solo ajustamos UI
                 form.reset();
                 submitButton.disabled = true;
-                
+                submitButton.classList.remove('htmx-request');
             } else {
                 console.log(`Error temporal (${serverErrorCount}/3)`);
-                
+                submitButton.classList.remove('htmx-request');
                 setTimeout(() => {
                     submitButton.disabled = false;
                     if (responseDiv) {
@@ -177,19 +151,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }, 5000);
             }
-            
             return;
         }
         
         // ÉXITO (200)
         if (statusCode === 200) {
             console.log('Envío exitoso');
-            
-            serverErrorCount = 0; // Resetear errores
+            serverErrorCount = 0;
             form.reset();
+
+            submitButton.classList.remove('htmx-request');
 
             setTimeout(() => {
                 submitButton.disabled = false;
+                
                 if (responseDiv) {
                     responseDiv.innerHTML = '';
                     responseDiv.className = '';
@@ -201,21 +176,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // ERROR DE RED 
     form.addEventListener('htmx:responseError', function() {
         console.error('Error de red');
-        
         serverErrorCount++;
         
         if (serverErrorCount >= 3) {
             console.log('Bloqueo permanente');
-            
             if (responseDiv) {
                 responseDiv.innerHTML = '<div class="error permanent"><strong>No fue posible enviar tu mensaje.</strong> Por favor, contáctanos por <strong>WhatsApp</strong> o por <strong>Correo Electrónico</strong>.</div>';
                 responseDiv.classList.add('permanent');
             }
-            
             form.reset();
             submitButton.disabled = true;
+            submitButton.classList.remove('htmx-request');
             
         } else {
+            submitButton.classList.remove('htmx-request');
+
             if (responseDiv) {
                 responseDiv.innerHTML = `<div class="warning"><strong>Error de conexión.</strong> Verifica tu internet. (Intento ${serverErrorCount}/3)</div>`;
                 responseDiv.classList.add('warning');
